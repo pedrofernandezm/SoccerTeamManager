@@ -1,0 +1,10 @@
+/.bundle
+/db/*.sqlite3
+/log/*.log
+/tmp
+.rvmrc
+.DS_Store
+**/.DS_Store
+/coverage
+.powrc
+*.orig
