@@ -1,0 +1,4 @@
+%h2 New team
+= simple_form_for [:users, @team] do |form|
+  = form.input :name, required: false, placeholder: "Name", label: false
+  = form.submit class: "btn"
