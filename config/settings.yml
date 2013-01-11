@@ -1,0 +1,16 @@
+defaults: &defaults
+  facebook:
+    app_id: '458516370864851'
+    app_secret: '66dda83116d5c265a713061d298c28f3'
+  twitter:
+    consumer_key: ''
+    consumer_secret: ''
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
