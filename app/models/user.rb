@@ -32,6 +32,8 @@ class User < ActiveRecord::Base
     :remember_me, :dob, :email, :first_name, :last_name
 
   has_many :owned_teams, class_name: Team
+  has_many :team_users
+  has_many :teams, through: :team_users
   has_many :authentications
 
   validates :email, presence: true
@@ -41,4 +43,14 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def profile_picture_url
+    facebok_profile_picture_url
+  end
+
+  def facebok_profile_picture_url
+    facebook_authentication = self.authentications.find_by_provider("facebook")
+    return "https://graph.facebook.com/#{facebook_authentication.uid}/picture" if facebook_authentication
+  end
+
 end

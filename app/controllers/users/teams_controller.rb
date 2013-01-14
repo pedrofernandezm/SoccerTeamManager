@@ -1,11 +1,10 @@
 class Users::TeamsController < UsersController
 
+  before_filter :authenticate_user!
+
   def index
-    @teams = Team.order(:name)
+    @teams = current_user.teams
   end
 
-  def new
-    @team = Team.new
-  end
 
 end

@@ -1,20 +1,18 @@
 # == Schema Information
 #
-# Table name: teams
+# Table name: team_users
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
 #  user_id    :integer
+#  team_id    :integer
+#  confirmed  :boolean          default(FALSE)
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Team < ActiveRecord::Base
-  attr_accessible :name, :user_id
+class TeamUser < ActiveRecord::Base
+  attr_accessible :confirmed, :team_id, :user_id
 
   belongs_to :user
-  has_many :team_users
-  has_many :users, through: :team_users
-
-  validates :name, presence: true
+  belongs_to :team
 end
